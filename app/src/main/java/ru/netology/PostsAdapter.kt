@@ -12,7 +12,6 @@ interface CallBackPost {
     fun shared(post: Post)
     fun removed(post: Post)
     fun edited(post: Post)
-    fun canceled(post: Post)
 }
 
 class PostsAdapter(
@@ -70,7 +69,6 @@ class PostViewHolder(
                             }
                             R.id.edit_post -> {
                                 callBackPost.edited(post)
-                                callBackPost.canceled(post)
                                 true
 
                             }

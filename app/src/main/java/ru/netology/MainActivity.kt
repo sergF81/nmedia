@@ -35,12 +35,6 @@ class MainActivity : AppCompatActivity() {
                 viewModel.edit(post)
             }
 
-            override fun canceled(post: Post) {
-                binding.group.visibility = View.VISIBLE
-                with(binding.contentTemp) {
-                    setText(post.content)
-                }
-            }
         })
 
         binding.list.adapter = adapter
@@ -57,6 +51,11 @@ class MainActivity : AppCompatActivity() {
                 requestFocus()
                 setText(post.content)
             }
+            binding.group.visibility = View.VISIBLE
+            with(binding.contentTemp) {
+                setText(post.content)
+            }
+
 
         }
         binding.save.setOnClickListener {
@@ -70,11 +69,11 @@ class MainActivity : AppCompatActivity() {
             binding.content.setText("")
             binding.content.clearFocus()
             hideKeyboardFrom(this, binding.save)
-            binding.group.visibility = View.INVISIBLE
+            binding.group.visibility = View.GONE
         }
 
         binding.cancelEdit.setOnClickListener {
-            binding.group.visibility = View.INVISIBLE
+            binding.group.visibility = View.GONE
             binding.content.setText("")
             binding.content.clearFocus()
             hideKeyboardFrom(this, binding.cancelEdit)
